@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
-
+use App\Http\Controllers\SessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +25,7 @@ Route::post('/delete', [AuthorController::class, 'remove']);
 Route::get('/find', [AuthorController::class, 'find']);
 Route::post('/find', [AuthorController::class, 'search']);
 Route::get('/author/{author}', [AuthorController::class, 'bind']);
+Route::get('/relation', [AuthorController::class, 'relate']);
 
 Route::prefix('book')->group(function () {
   Route::get('/', [BookController::class, 'index']);
@@ -32,4 +33,5 @@ Route::prefix('book')->group(function () {
   Route::post('/add', [BookController::class, 'create']);
 });
 
-Route::get('/relation', [AuthorController::class, 'relate']);
+Route::get('/session', [SessionController::class, 'getSes']);
+Route::post('/session', [SessionController::class, 'postSes']);
